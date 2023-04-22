@@ -1,0 +1,6 @@
+﻿  Source.cpp
+  лаба4вар7.cpp
+  Создание кода...
+C:\Users\mbred\source\repos\лаба4вар7\лаба4вар7\лаба4вар7.cpp(67): warning C4717: operator+: рекурсия на всех путях выполнения, функция вызовет переполнение стека
+C:\Users\mbred\source\repos\лаба4вар7\лаба4вар7\лаба4вар7.cpp(64): warning C4717: operator-: рекурсия на всех путях выполнения, функция вызовет переполнение стека
+  лаба4вар7.vcxproj -> C:\Users\mbred\source\repos\лаба4вар7\x64\Debug\лаба4вар7.exe
