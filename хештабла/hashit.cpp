@@ -132,6 +132,7 @@ void Index_HF() //просмотр всех индексов, которые в�
         cout << "Res HF: " << INDEX_HF[i] << endl;
 }
 
+
 int HashTab::Hash_Func_for_insert(string key, const int size)
 {
     double ka = (sqrt(3) - 1) * get_sum_ADD(key);
