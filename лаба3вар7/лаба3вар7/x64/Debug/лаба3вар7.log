@@ -1,0 +1,13 @@
+﻿  Money.cpp
+C:\Users\чмоня\Documents\GitHub\laboratorky\лаба3вар7\лаба3вар7\Money.cpp(35,14): warning C4244: инициализация: преобразование "long" в "float", возможна потеря данных
+C:\Users\чмоня\Documents\GitHub\laboratorky\лаба3вар7\лаба3вар7\Money.cpp(36,14): warning C4244: инициализация: преобразование "long" в "float", возможна потеря данных
+C:\Users\чмоня\Documents\GitHub\laboratorky\лаба3вар7\лаба3вар7\Money.cpp(38,17): warning C4244: =: преобразование "float" в "long", возможна потеря данных
+C:\Users\чмоня\Documents\GitHub\laboratorky\лаба3вар7\лаба3вар7\Money.cpp(39,44): warning C4244: =: преобразование "float" в "int", возможна потеря данных
+C:\Users\чмоня\Documents\GitHub\laboratorky\лаба3вар7\лаба3вар7\Money.cpp(44,14): warning C4244: инициализация: преобразование "long" в "float", возможна потеря данных
+C:\Users\чмоня\Documents\GitHub\laboratorky\лаба3вар7\лаба3вар7\Money.cpp(45,14): warning C4244: инициализация: преобразование "long" в "float", возможна потеря данных
+C:\Users\чмоня\Documents\GitHub\laboratorky\лаба3вар7\лаба3вар7\Money.cpp(48,17): warning C4244: =: преобразование "double" в "long", возможна потеря данных
+C:\Users\чмоня\Documents\GitHub\laboratorky\лаба3вар7\лаба3вар7\Money.cpp(49,17): warning C4244: =: преобразование "double" в "int", возможна потеря данных
+  лаба3вар7.cpp
+C:\Users\чмоня\Documents\GitHub\laboratorky\лаба3вар7\лаба3вар7\лаба3вар7.cpp(5,1): warning C4326: возвращаемый тип "main" должен быть "int", а не "void"
+  Создание кода...
+  лаба3вар7.vcxproj -> C:\Users\чмоня\Documents\GitHub\laboratorky\лаба3вар7\x64\Debug\лаба3вар7.exe
