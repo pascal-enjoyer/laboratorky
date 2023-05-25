@@ -3,32 +3,12 @@
 #include <algorithm>
 #include <queue>
 #include <map>
+#include "Money1.h"
+#include "Money2.h"
+#include "Money3.h"
 
 using namespace std;
 // Определение класса Money
-#include <iostream>
-#include <vector>
-#include <algorithm>
-
-class Money {
-public:
-    int rub;
-    int kopeks;
-
-    Money(int rub = 0, int kopeks = 0) : rub(rub), kopeks(kopeks) {}
-
-    bool operator<(const Money& other) const {
-        if (rub == other.rub)
-            return kopeks < other.kopeks;
-        return rub < other.rub;
-    }
-
-    bool operator==(const Money& other) const {
-        return rub == other.rub && kopeks == other.kopeks;
-    }
-};
-
-// Функция для добавления элементов в контейнер
 void addElements1(std::vector<Money>& container) {
     container.push_back(Money(5, 10));
     container.push_back(Money(2, 50));
@@ -169,31 +149,6 @@ void menu1() {
 }
 
 // Определение класса Money
-class Money2 {
-public:
-    int rub;
-    int kopeks;
-
-    Money2(int rub = 0, int kopeks = 0) : rub(rub), kopeks(kopeks) {}
-
-
-    bool operator<(const Money2& other) const {
-        if (rub == other.rub)
-            return kopeks < other.kopeks;
-        return rub < other.rub;
-    }
-};
-bool operator==(const Money2& lhs, const Money2& rhs) {
-    return lhs.rub == rhs.rub && lhs.kopeks == rhs.kopeks;
-}
-bool operator!=(const Money2& lhs, const Money2& rhs) {
-    return !(lhs == rhs);
-}
-bool operator>(const Money2& lhs, const Money2& rhs) {
-    if (lhs.rub == rhs.rub)
-        return lhs.kopeks > rhs.kopeks;
-    return lhs.rub > rhs.rub;
-}
 // Функция для добавления элементов в контейнер
 void addElements2(queue<Money2>& container) {
     container.push(Money2(5, 10));
@@ -417,26 +372,7 @@ void menu2() {
 }
 
 
-struct Money3 {
-    int rub;
-    int kopeks;
 
-    Money3(int rub = 0, int kopeks = 0) : rub(rub), kopeks(kopeks) {}
-};
-
-bool operator<(const Money3& lhs, const Money3& rhs) {
-    if (lhs.rub < rhs.rub) {
-        return true;
-    }
-    else if (lhs.rub == rhs.rub) {
-        return lhs.kopeks < rhs.kopeks;
-    }
-    return false;
-}
-
-bool operator==(const Money3& lhs, const Money3& rhs) {
-    return lhs.rub == rhs.rub && lhs.kopeks == rhs.kopeks;
-}
 
 // Функция для добавления элементов в контейнер
 void addElements3(map<int, Money3>& container) {

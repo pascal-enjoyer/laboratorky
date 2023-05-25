@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="const_iterator">
+    <Position X="1.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAIAAAAAEAAQAAAAAAAAAAAAAgAAQAAAA=</HashCode>
+      <FileName>Const_iterator.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Mnozhestvo">
+    <Position X="3" Y="0.5" Width="3.25" />
+    <Compartments>
+      <Compartment Name="Nested Types" Collapsed="false" />
+    </Compartments>
+    <NestedTypes>
+      <Class Name="Mnozhestvo::iterator">
+        <TypeIdentifier>
+          <NewMemberFileName>Mnozhestvo.h</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>ABAAAIACAAAAAABEAIAAgAAQAAEAAAAAAAAgAgACAAA=</HashCode>
+      <FileName>Mnozhestvo.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

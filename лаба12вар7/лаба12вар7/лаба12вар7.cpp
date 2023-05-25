@@ -1,9 +1,11 @@
 ﻿#include <iostream>
 #include <set>
 #include <vector>
+#include "Money1.h"
+#include "CustomVector.h"
 using namespace std;
 // Функция для добавления элементов в контейнер
-void addElements(std::multiset<float>& container) {
+void addElements1(std::multiset<float>& container) {
     container.insert(3.5);
     container.insert(1.2);
     container.insert(4.7);
@@ -11,7 +13,7 @@ void addElements(std::multiset<float>& container) {
 }
 
 // Функция для удаления элемента из контейнера по заданному значению
-void removeElement(std::multiset<float>& container, float value) {
+void removeElement1(std::multiset<float>& container, float value) {
     auto it = container.find(value);
     if (it != container.end()) {
         container.erase(it);
@@ -23,7 +25,7 @@ void removeElement(std::multiset<float>& container, float value) {
 }
 
 // Функция для выполнения задания варианта
-void performTask(std::multiset<float>& container) {
+void performTask1(std::multiset<float>& container) {
     if (container.empty()) {
         std::cout << "Контейнер пуст. Добавьте элементы перед выполнением задания.\n";
         return;
@@ -37,7 +39,7 @@ void performTask(std::multiset<float>& container) {
 
     // Находим элемент с заданным ключом и удаляем его
     float key = 4.7;
-    removeElement(container, key);
+    removeElement1(container, key);
 
     // Находим максимальный элемент
     float maxElement = *container.rbegin();
@@ -50,7 +52,7 @@ void performTask(std::multiset<float>& container) {
 }
 
 // Функция для вывода содержимого контейнера
-void printContainer(const std::multiset<float>& container) {
+void printContainer1(const std::multiset<float>& container) {
     std::cout << "Содержимое контейнера:\n";
     for (const auto& value : container) {
         std::cout << value << ' ';
@@ -76,22 +78,22 @@ void menu() {
 
         switch (choice) {
         case 1:
-            addElements(container);
+            addElements1(container);
             std::cout << "Элементы успешно добавлены в контейнер.\n";
             break;
         case 2: {
             float value;
             std::cout << "Введите значение элемента для удаления: ";
             std::cin >> value;
-            removeElement(container, value);
+            removeElement1(container, value);
             break;
         }
         case 3:
-            performTask(container);
+            performTask1(container);
             std::cout << "Задание варианта выполнено.\n";
             break;
         case 4:
-            printContainer(container);
+            printContainer1(container);
             break;
         case 0:
             std::cout << "Выход из программы.\n";
@@ -105,29 +107,8 @@ void menu() {
     } while (choice != 0);
 }
 
-struct Money {
-    int rub;
-    int kopeks;
-
-    Money(int rub = 0, int kopeks = 0) : rub(rub), kopeks(kopeks) {}
-
-    // Перегрузка оператора < для сравнения элементов Money
-    bool operator<(const Money& other) const {
-        if (rub != other.rub) {
-            return rub < other.rub;
-        }
-        return kopeks < other.kopeks;
-    }
-
-    // Перегрузка оператора << для вывода элементов Money
-    friend std::ostream& operator<<(std::ostream& os, const Money& money) {
-        os << money.rub << " руб. " << money.kopeks << " коп.";
-        return os;
-    }
-};
-
 // Функция для добавления элементов в контейнер
-void addElements(std::multiset<Money>& container) {
+void addElements2(std::multiset<Money>& container) {
     container.insert(Money(10, 50));
     container.insert(Money(5, 30));
     container.insert(Money(8, 20));
@@ -135,7 +116,7 @@ void addElements(std::multiset<Money>& container) {
 }
 
 // Функция для удаления элемента из контейнера по заданному ключу
-void removeElement(std::multiset<Money>& container, const Money& key) {
+void removeElement2(std::multiset<Money>& container, const Money& key) {
     auto it = container.find(key);
     if (it != container.end()) {
         container.erase(it);
@@ -147,7 +128,7 @@ void removeElement(std::multiset<Money>& container, const Money& key) {
 }
 
 // Функция для выполнения задания варианта
-void performTask(std::multiset<Money>& container) {
+void performTask2(std::multiset<Money>& container) {
     if (container.empty()) {
         std::cout << "Контейнер пуст. Добавьте элементы перед выполнением задания.\n";
         return;
@@ -161,7 +142,7 @@ void performTask(std::multiset<Money>& container) {
 
     // Находим элемент с заданным ключом и удаляем его
     Money key(8, 20);
-    removeElement(container, key);
+    removeElement2(container, key);
 
     // Находим максимальный элемент
     const Money& maxElement = *container.rbegin();
@@ -190,7 +171,7 @@ void performTask(std::multiset<Money>& container) {
 }
 
 // Функция для вывода содержимого контейнера
-void printContainer(const std::multiset<Money>& container) {
+void printContainer2(const std::multiset<Money>& container) {
     std::cout << "Содержимое контейнера:\n";
     for (const auto& money : container) {
         std::cout << money << '\n';
@@ -214,22 +195,22 @@ void menu2() {
 
         switch (choice) {
         case 1:
-            addElements(container);
+            addElements2(container);
             std::cout << "Элементы добавлены в контейнер.\n";
             break;
         case 2: {
             int rub, kopeks;
             std::cout << "Введите ключ для удаления (рубли и копейки): ";
             std::cin >> rub >> kopeks;
-            removeElement(container, Money(rub, kopeks));
+            removeElement2(container, Money(rub, kopeks));
             break;
         }
         case 3:
-            performTask(container);
+            performTask2(container);
             std::cout << "Задание выполнено.\n";
             break;
         case 4:
-            printContainer(container);
+            printContainer2(container);
             break;
         case 0:
             std::cout << "Выход из программы.\n";
@@ -244,67 +225,13 @@ void menu2() {
 }
 
 
-template <typename T>
-class Vector {
-private:
-    std::multiset<T> container;
-
-public:
-    void addElements(const std::vector<T>& elements) {
-        for (const auto& element : elements) {
-            container.insert(element);
-        }
-    }
-
-    void removeElement(const T& key) {
-        auto it = container.find(key);
-        if (it != container.end()) {
-            container.erase(it);
-            std::cout << "Элемент " << key << " удален из контейнера.\n";
-        }
-        else {
-            std::cout << "Элемент " << key << " не найден в контейнере.\n";
-        }
-    }
-
-    void performTask() {
-        if (container.empty()) {
-            std::cout << "Контейнер пуст. Добавьте элементы перед выполнением задания.\n";
-            return;
-        }
-
-        // Находим минимальный элемент
-        const T& minElement = *container.begin();
-
-        // Добавляем минимальный элемент в конец контейнера
-        container.insert(minElement);
-
-        // Находим элемент с заданным ключом
-        T keyElement; // Здесь нужно указать соответствующий тип для ключа элемента
-        auto keyIt = container.find(keyElement);
-        if (keyIt != container.end()) {
-            // Удаляем элемент с заданным ключом
-            container.erase(keyIt);
-            std::cout << "Элемент с ключом " << keyElement << " удален из контейнера.\n";
-        }
-        else {
-            std::cout << "Элемент с ключом " << keyElement << " не найден в контейнере.\n";
-        }
-
-        // Добавляем сумму минимального и максимального элементов к каждому элементу контейнера
-        const T& maxElement = *container.rbegin();
-        for (auto element : container) {
-            element += minElement + maxElement;
-        }
-    }
-};
 
 void menu3() {
     Vector<int> vec;
 
     // Заполнение контейнера элементами
     std::vector<int> elements = { 5, 2, 8, 1, 9 };
-    vec.addElements(elements);
+    vec.addElements3(elements);
 
     int choice;
     do {
@@ -323,18 +250,18 @@ void menu3() {
             vector<int> newElements;
             // Ввод новых элементов
             // ...
-            vec.addElements(newElements);
+            vec.addElements3(newElements);
             break;
         }
         case 2: {
             int key;
             // Ввод ключа элемента для удаления
             // ...
-            vec.removeElement(key);
+            vec.removeElement3(key);
             break;
         }
         case 3: {
-            vec.performTask();
+            vec.performTask3();
             break;
         }
         case 0: {

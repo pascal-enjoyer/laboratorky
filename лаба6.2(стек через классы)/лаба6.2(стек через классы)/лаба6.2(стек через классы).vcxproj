@@ -129,6 +129,12 @@
   <ItemGroup>
     <ClCompile Include="лаба6.2(стек через классы).cpp" />
   </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="CustomStack.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ClassDiagram.cd" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

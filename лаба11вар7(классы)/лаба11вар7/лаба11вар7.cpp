@@ -2,6 +2,8 @@
 #include <vector>
 #include <queue>
 #include <algorithm>
+#include "Money1.h"
+#include "Container1.h"
 
 using namespace std;
 
@@ -24,26 +26,6 @@ void add_sum_of_min_max(vector<float>& vec) {
     }
 }
 
-// Task 2
-class Money {
-public:
-    Money() : rubles(0), kopecks(0) {}
-    Money(long r, int k) : rubles(r), kopecks(k) {}
-
-    long getRubles() const { return rubles; }
-    int getKopecks() const { return kopecks; }
-
-    void setRubles(long r) { rubles = r; }
-    void setKopecks(int k) { kopecks = k; }
-
-    friend bool operator==(const Money& lhs, const Money& rhs) {
-        return lhs.rubles == rhs.rubles && lhs.kopecks == rhs.kopecks;
-    }
-
-private:
-    long rubles;
-    int kopecks;
-};
 
 void add_min_value(deque<Money>& v) {
     Money minVal;
@@ -90,43 +72,8 @@ void add_sum_of_min_max(deque<Money>& q) {
     }
 }
 
-template<typename T>
-class Container
-{
-public:
-    Container() {}
-    void add(T element);
-    T get(int index);
-    void remove(int index);
-    int size();
-    void clear();
-private:
-    std::vector<T> elements;
-};
-template<typename T>
-void Container<T>::add(T element) {
-    elements.push_back(element);
-}
 
-template<typename T>
-T Container<T>::get(int index) {
-    return elements.at(index);
-}
 
-template<typename T>
-void Container<T>::remove(int index) {
-    elements.erase(elements.begin() + index);
-}
-
-template<typename T>
-int Container<T>::size() {
-    return elements.size();
-}
-
-template<typename T>
-void Container<T>::clear() {
-    elements.clear();
-}
 int main()
 {
     Container<int> container;
@@ -135,44 +82,44 @@ int main()
     int index;
     do
     {
-        std::cout << "Menu" << std::endl;
-        std::cout << "1. Add an element" << std::endl;
-        std::cout << "2. Get an element" << std::endl;
-        std::cout << "3. Remove an element" << std::endl;
-        std::cout << "4. Get the size" << std::endl;
-        std::cout << "5. Clear the container" << std::endl;
-        std::cout << "6. Exit" << std::endl;
-        std::cout << "Enter your choice: ";
-        std::cin >> choice;
+        cout << "Menu" << endl;
+        cout << "1. Add an element" << endl;
+        cout << "2. Get an element" << endl;
+        cout << "3. Remove an element" << endl;
+        cout << "4. Get the size" << endl;
+        cout << "5. Clear the container" << endl;
+        cout << "6. Exit" << endl;
+        cout << "Enter your choice: ";
+        cin >> choice;
         switch (choice)
         {
         case 1:
-            std::cout << "Enter the value to add: ";
-            std::cin >> value;
+            cout << "Enter the value to add: ";
+            cin >> value;
             container.add(value);
             break;
         case 2:
-            std::cout << "Enter the index of the element to get: ";
-            std::cin >> index;
-            std::cout << "Element at index " << index << " is " << container.get(index) << std::endl;
+            cout << "Enter the index of the element to get: ";
+            cin >> index;
+            cout << "Element at index " << index << " is " << container.get(index) << endl;
             break;
         case 3:
-            std::cout << "Enter the index of the element to remove: ";
-            std::cin >> index;
+            cout << "Enter the index of the element to remove: ";
+            cin >> index;
             container.remove(index);
             break;
         case 4:
-            std::cout << "Size of container is " << container.size() << std::endl;
+            cout << "Size of container is " << container.size() << endl;
             break;
         case 5:
             container.clear();
-            std::cout << "Container cleared." << std::endl;
+            cout << "Container cleared." << endl;
             break;
         case 6:
-            std::cout << "Exiting..." << std::endl;
+            cout << "Exiting..." << endl;
             break;
         default:
-            std::cout << "Invalid choice. Please enter a valid choice." << std::endl;
+            cout << "Invalid choice. Please enter a valid choice." << endl;
             break;
         }
     } while (choice != 6);

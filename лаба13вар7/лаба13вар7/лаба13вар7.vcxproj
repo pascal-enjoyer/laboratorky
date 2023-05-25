@@ -129,6 +129,14 @@
   <ItemGroup>
     <ClCompile Include="лаба13вар7.cpp" />
   </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Money1.h" />
+    <ClInclude Include="Money2.h" />
+    <ClInclude Include="Money3.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ClassDiagram.cd" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
