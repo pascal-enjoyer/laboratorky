@@ -1,100 +1,210 @@
 ﻿#include <iostream>
+#include <fstream>
+#include <string>
+
 using namespace std;
+
 class Money {
 private:
     long rubles;
-    int kopeks;
-
+    int kopecks;
 public:
-    Money(long rub, int kop) {
-        rubles = rub;
-        kopeks = kop;
+    Money() {
+        rubles = 0;
+        kopecks = 0;
     }
-
+    Money(long r, int k) {
+        rubles = r;
+        kopecks = k;
+    }
+    void setMoney(long r, int k) {
+        rubles = r;
+        kopecks = k;
+    }
     void print() {
-        cout << rubles << "," << kopeks << endl;
+        cout << rubles << "," << kopecks << endl;
     }
-
-    Money multiply(double num) {
-        int newKopeks = static_cast<int>(kopeks * num);
-        long newRubles = static_cast<long>(rubles * num) + newKopeks / 100;
-        newKopeks = newKopeks % 100;
-        return Money(newRubles, newKopeks);
+    Money divide(int divider) {
+        long totalKopecks = rubles * 100 + kopecks;
+        totalKopecks /= divider;
+        long newRubles = totalKopecks / 100;
+        int newKopecks = totalKopecks % 100;
+        return Money(newRubles, newKopecks);
     }
-
-    Money divide(int num) {
-        int newKopeks = kopeks / num;
-        long newRubles = rubles / num + newKopeks / 100;
-        newKopeks = newKopeks % 100;
-        return Money(newRubles, newKopeks);
+    Money multiply(double factor) {
+        long totalKopecks = rubles * 100 + kopecks;
+        totalKopecks *= factor;
+        long newRubles = totalKopecks / 100;
+        int newKopecks = totalKopecks % 100;
+        return Money(newRubles, newKopecks);
     }
-
-    void removeNotEqual(Money& m) {
-        if (rubles != m.rubles || kopeks != m.kopeks) {
-            rubles = 0;
-            kopeks = 0;
-        }
+    void setRubles(long r) {
+        rubles = r;
     }
-
-    void reduceByHalf(Money& m) {
-        if (rubles == m.rubles && kopeks == m.kopeks) {
-            rubles /= 2;
-            kopeks /= 2;
-        }
+    void setKopecks(int k) {
+        kopecks = k;
     }
-
-    void addEntriesToBeginning(int k) {
-        for (int i = 0; i < k; i++) {
-            rubles++;
-            kopeks++;
-        }
+    long getRubles() {
+        return rubles;
+    }
+    int getKopecks() {
+        return kopecks;
     }
 };
 
+void createMoney() {
+    Money m;
+    long r;
+    int k;
+    cout << "Enter rubles: ";
+    cin >> r;
+    cout << "Enter kopecks: ";
+    cin >> k;
+    m.setMoney(r, k);
+    ofstream file("money.txt", ios::app);
+    file.write(reinterpret_cast<const char*>(&m), sizeof(m));
+    file.close();
+    cout << "Money added successfully!" << endl;
+}
+
+void viewMoney() {
+    ifstream file("money.txt");
+    Money m;
+    while (file.read(reinterpret_cast<char*>(&m), sizeof(m))) {
+        m.print();
+    }
+    file.close();
+}
+
+void deleteMoney() {
+    Money m;
+    long r;
+    int k;
+    cout << "Enter rubles: ";
+    cin >> r;
+    cout << "Enter kopecks: ";
+    cin >> k;
+    ifstream inFile("money.txt", ios::binary);
+    ofstream outFile("temp.txt", ios::binary);
+    while (inFile.read(reinterpret_cast<char*>(&m), sizeof(m))) {
+        if (m.getRubles() == r && m.getKopecks() == k) {
+            continue;
+        }
+        outFile.write(reinterpret_cast<const char*>(&m), sizeof(m));
+    }
+    inFile.close();
+    outFile.close();
+    remove("money.txt");
+    rename("temp.txt", "money.txt");
+    cout << "Money deleted successfully!" << endl;
+}
+void updateMoney() {
+    Money m;
+    long r, newR;
+    int k, newK;
+    cout << "Enter rubles to update: ";
+    cin >> r;
+    cout << "Enter kopecks to update: ";
+    cin >> k;
+    cout << "Enter new rubles: ";
+    cin >> newR;
+    cout << "Enter new kopecks: ";
+    cin >> newK;
+    ifstream inFile("money.txt", ios::binary);
+    ofstream outFile("temp.txt", ios::binary);
+    while (inFile.read(reinterpret_cast<char*>(&m), sizeof(m))) {
+        if (m.getRubles() == r && m.getKopecks() == k) {
+            m.setMoney(newR, newK);
+        }
+        outFile.write(reinterpret_cast<char*>(&m), sizeof(m));
+    }
+    inFile.close();
+    outFile.close();
+    remove("money.txt");
+    rename("temp.txt", "money.txt");
+    cout << "Update successful!" << endl;
+}
+void addMoney() {
+    Money m;
+    long r;
+    int k, num;
+    cout << "Enter number of elements to add: ";
+    cin >> num;
+    ofstream outFile("money.txt", ios::binary | ios::app);
+    for (int i = 0; i < num; i++) {
+        cout << "Enter rubles: ";
+        cin >> r;
+        cout << "Enter kopecks: ";
+        cin >> k;
+        m.setRubles(r);
+        m.setKopecks(k);
+        outFile.write(reinterpret_cast<char*>(&m), sizeof(m));
+    }
+    outFile.close();
+}
+void multiplyMoney() {
+    Money m;
+    float multiplier;
+    ifstream inFile("money.txt", ios::binary);
+    ofstream outFile("temp.txt", ios::binary);
+    cout << "Enter multiplier: ";
+    cin >> multiplier;
+    while (inFile.read(reinterpret_cast<char*>(&m), sizeof(m))) {
+        m.multiply(multiplier);
+        outFile.write(reinterpret_cast<char*>(&m), sizeof(m));
+    }
+}
+void divideMoney() {
+    Money m;
+    float divisor;
+    ifstream inFile("money.txt", ios::binary);
+    ofstream outFile("temp.txt", ios::binary);
+    cout << "Enter divisor: ";
+    cin >> divisor;
+    while (inFile.read(reinterpret_cast<char*>(&m), sizeof(m))) {
+        m.divide(divisor);
+        outFile.write(reinterpret_cast<char*>(&m), sizeof(m));
+    }
+}
 int main() {
-    setlocale(0, "");
-    Money m(10, 50);
-    cout << "Деньги до умножения: ";
-    m.print();
-    Money m2 = m.multiply(2.5);
-    cout << "Деньги после умножения: ";
-    m2.print();
-
-    cout << endl;
-
-    Money m3(100, 80);
-    cout << "Деньги до деления: ";
-    m3.print();
-    Money m4 = m3.divide(4);
-    cout << "Деньги после деления: ";
-    m4.print();
-
-    cout << endl;
-
-    Money m5(20, 0);
-    cout << "Деньги до удалением неравных значений: ";
-    m5.print();
-    m5.removeNotEqual(m);
-    cout << "Деньги после удалением неравных значений: ";
-    m5.print();
-
-    cout << endl;
-
-    Money m6(20, 50);
-    cout << "Деньги до сокращения наполовину: ";
-    m6.print();
-    m6.reduceByHalf(m);
-    cout << "Деньги после сокращения наполовину: ";
-    m6.print();
-
-    cout << endl;
-
-    Money m7(0, 0);
-    cout << "Деньги до добавлением значений в начало: ";
-    m7.print();
-    m7.addEntriesToBeginning(3);
-    cout << "Деньги после добавлением значений в начало: ";
-    m7.print();
-
+    int choice;
+    do {
+        cout << "\n\nMenu\n";
+        cout << "1. Add Money\n";
+        cout << "2. View All Money\n";
+        cout << "3. Delete Money\n";
+        cout << "4. Update Money\n";
+        cout << "5. Multiply Money\n";
+        cout << "6. Divide Money\n";
+        cout << "0. Exit\n";
+        cout << "Enter choice: ";
+        cin >> choice;
+        switch (choice) {
+        case 1:
+            addMoney();
+            break;
+        case 2:
+            viewMoney();
+            break;
+        case 3:
+            deleteMoney();
+            break;
+        case 4:
+            updateMoney();
+            break;
+        case 5:
+            multiplyMoney();
+            break;
+        case 6:
+            divideMoney();
+            break;
+        case 0:
+            cout << "Exiting program..." << endl;
+            break;
+        default:
+            cout << "Invalid choice, please try again." << endl;
+            break;
+        }
+    } while (choice != 0);
     return 0;
 }
