@@ -1,2 +1,5 @@
 ﻿  лаба9вар7.cpp
-  лаба9вар7.vcxproj -> C:\Users\чмоня\source\repos\лаба9вар7\x64\Debug\лаба9вар7.exe
+C:\Users\чмоня\Documents\GitHub\laboratorky\лаба9вар7\лаба9вар7\Mnozhestvo.h(24,19): error C3861: out_of_range: идентификатор не найден
+C:\Users\чмоня\Documents\GitHub\laboratorky\лаба9вар7\лаба9вар7\Mnozhestvo.h(30,19): error C3861: out_of_range: идентификатор не найден
+C:\Users\чмоня\Documents\GitHub\laboratorky\лаба9вар7\лаба9вар7\Mnozhestvo.h(50,19): error C3861: logic_error: идентификатор не найден
+C:\Users\чмоня\Documents\GitHub\laboratorky\лаба9вар7\лаба9вар7\Mnozhestvo.h(58,23): error C3861: invalid_argument: идентификатор не найден

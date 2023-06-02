@@ -1,4 +1,5 @@
 ﻿  лаба10вар7.cpp
-C:\Users\чмоня\source\repos\лаба10вар7\лаба10вар7\лаба10вар7.cpp(36,25): warning C4244: *=: преобразование "double" в "long", возможна потеря данных
-C:\Users\чмоня\source\repos\лаба10вар7\лаба10вар7\лаба10вар7.cpp(165,18): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
-  лаба10вар7.vcxproj -> C:\Users\чмоня\source\repos\лаба10вар7\x64\Debug\лаба10вар7.exe
+C:\Users\чмоня\Documents\GitHub\laboratorky\лаба10вар7\лаба10вар7\Money1.h(24,9): error C2065: cout: необъявленный идентификатор
+C:\Users\чмоня\Documents\GitHub\laboratorky\лаба10вар7\лаба10вар7\Money1.h(24,45): error C2065: endl: необъявленный идентификатор
+C:\Users\чмоня\Documents\GitHub\laboratorky\лаба10вар7\лаба10вар7\Money1.h(35,25): warning C4244: *=: преобразование "double" в "long", возможна потеря данных
+C:\Users\чмоня\Documents\GitHub\laboratorky\лаба10вар7\лаба10вар7\лаба10вар7.cpp(118,18): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
